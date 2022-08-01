@@ -1,26 +1,19 @@
 
-
-
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
-function renderLicenseBadge(license) {}
-
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
-function renderLicenseLink(license) {}
-
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-function renderLicenseSection(license) {
-   if (license) {
-     return `
-  ##${renderLicenseBadge(data.license)}
-  ##${renderLicenseLink(data.license)}
-  `} else {
-    return false
+//badge,
+function licenseGen(data){
+  if(data === "Public Domain"){
+    license = data + ": When a work is in the public domain, it is free for use by anyone for any purpose without restriction under copyright law. Public domain is the purest form of open/free, since no one owns or controls the material in any way."
+    licenseLink = "Link: [Public Domain](https://wiki.creativecommons.org/wiki/public_domain)"
+  }
+  if(data === "Creative Commons"){
+    license = data + ": A CC license is used when an author wants to give other people the right to share, use, and build upon a work that the author has created."
+    licenseLink = "Link: [Creative Commons](https://creativecommons.org/)"
+  }
+  if(data === "Copyright"){
+    license = data + ": A copyright is a type of intellectual property that gives its owner the exclusive right to copy, distribute, adapt, display, and perform a creative work, usually for a limited time. The creative work may be in a literary, artistic, educational, or musical form."
+    licenseLink = "Link: [Copyright](https://www.copyright.gov/)"
   }
 }
-
 
 var desc = "";
 var descHead = "";
@@ -30,6 +23,7 @@ var usage = "";
 var usageHead = "";
 var license = "";
 var licenseHead = "";
+var licenseLink = "";
 var tests = "";
 var testHead = "";
 
@@ -55,7 +49,7 @@ contentBuilder = data => {
   if(data.confirmLicense){
     contents = contents + " -[License](#license) ";
     licenseHead = "### License  "
-    license = data.license + "  ";
+    licenseGen(data.license)
   };
   if(data.confirmTest){
     contents = contents + " -[Tests](#tests) ";
