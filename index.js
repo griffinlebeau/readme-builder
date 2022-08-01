@@ -1,10 +1,6 @@
-// TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
 const generateMarkdown = require('./generateMarkdown');
-
-// TODO: Create an array of questions for user input
-//inquirer
 
 const promptUser = () => {
     console.log(`
@@ -12,7 +8,7 @@ const promptUser = () => {
     Create A New ReadMe
     ===================
     `);
-    return inquirer
+    inquirer
     .prompt([
         {
             name:'title',
@@ -89,7 +85,7 @@ const promptUser = () => {
         },
         {
             name: 'license',
-            type: 'checkbox',
+            type: 'list',
             message: 'Please select your license:',
             choices: ['Public Domain', 'Creative Commons', 'Copyright'],
             when: ({confirmLicense}) => {
@@ -121,26 +117,32 @@ const promptUser = () => {
                     return false
                 }
             }
+        },
+        {
+            name: 'github',
+            type: 'input',
+            message: 'Enter your Github: '
+        },
+        {
+            name: 'email',
+            type: 'input',
+            message: 'Enter your email: '
         }
     ])
+    .then(response => {
+        console.log(response);
+        var markdown = generateMarkdown(response);
+        console.log(markdown)
+        fileGen(markdown)
+    })
 }
 
 
-// TODO: Create a function to write README file
-const writeToFile = data => {
-    const mdData = generateMarkdown(data)
-    fs.writeToFile('/README.md', mdData, err => {
-        if (err) {
-            console.log(err);
-        }
+const fileGen = markdown => {
+    fs.writeFile('README.md', markdown, err => {
+        if (err) throw err;
+        console.log('Success! Your ReadMe file has been generated!')
     });
 }
 
-
-// Function call to initialize app
-promptUser().then(answers => {
-    console.log(answers)
-    console.log(data)
-    //writeToFile(data)
-})
-
+promptUser();
