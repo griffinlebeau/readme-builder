@@ -1,5 +1,3 @@
-
-//badge,
 function licenseGen(data){
   if(data === "Public Domain"){
     license = data + ": When a work is in the public domain, it is free for use by anyone for any purpose without restriction under copyright law. Public domain is the purest form of open/free, since no one owns or controls the material in any way."
@@ -86,6 +84,7 @@ module.exports = generateMarkdown = data => {
 
   ${licenseHead}
   ${license}
+  ${licenseLink}
 
   ${conHead}
   ${contributors}
