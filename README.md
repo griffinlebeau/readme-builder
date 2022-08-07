@@ -10,4 +10,7 @@ A simple CLI based application used for generatingp professional readme document
 
 ### Tools Used
 - Javascript, npm, inquirer
+
+### Tutorial:
+https://drive.google.com/file/d/18wpNBGmM7lDp1SFi2BzHQqSxzwqJ2OyY/view?usp=sharing
   
