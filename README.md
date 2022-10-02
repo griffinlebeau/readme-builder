@@ -1,5 +1,5 @@
 ### ReadMe Builder
-A simple CLI based application used for generatingp professional readme documents
+A simple CLI based application used for generating professional readme documents
 
 ### Instructions
 1. Download files from repository
